@@ -1,2 +1,2 @@
 # DeepLearning
-Some tutorials and projects for deep learning
+Some deep learning projects.
