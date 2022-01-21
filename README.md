@@ -15,7 +15,12 @@ Main idea: Apply the signature transform to preprocess hand-written characters a
 
 And the signature transform method is implemented in the **signatory** package which can be accelrated by GPU and works the fastest in all existing packages. Read more about the tutorial [here]{https://signatory.readthedocs.io/en/latest/index.html}.
 
-We choose to use this transform because
+I choose this transform because
 * there is a one-to-one map between the original time series and the infinite signature vector, as the signature level increases, its elements' norm will decrease factorially, so we can use this transform will only a little information loss;
 * we can transform long time series to a much shorter vector to reduce computation cost;
-*  
+* it can be applied to any irregularly-sampled time series so we do not need to delete or add points to make the observations have the same
+length before training models;
+* it is shift-invariance and invariant under time reparametrizations;
+* it is robust to outliers.
+
+Besides, I added a dimension to augment raw characters which indicates the number of stroke points belonging to.
