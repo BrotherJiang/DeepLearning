@@ -17,7 +17,8 @@ from torch.utils.data import TensorDataset, DataLoader
 from tqdm import tqdm_notebook
 from sklearn.preprocessing import MinMaxScaler
 
-def GetPenDigit(Path='C:/study/research/code/sigpen/pendigits-orig.tra.txt'):
+## Define a function to transform original data and save as numpy array
+def GetPenDigit(Path='pendigits-orig.tra.txt'):
     """
     Load the original pen-digit data
     """
