@@ -10,14 +10,35 @@ import torch.nn as nn
 from torch.utils.data import TensorDataset, DataLoader
 import multiprocessing as mp
 import argparse
+from matplotlib import font_manager
 
-
-with open('./alphabet_3926', 'rb') as f:
+curwd = 'C:/study/research/code/sigpen'
+with open(curwd+'/alphabet_3926', 'rb') as f:
     chardic = pickle.load(f)
 chinese = list(chardic.keys())
 
+## visualize the j-th hand-written character i
+fontP = font_manager.FontProperties()
+fontP.set_family('SimHei')
+fontP.set_size(14)
+def draw(i, j):
+    setpath = osp.join(curwd + '/Pot11TrainPath/' + str(i).zfill(5))
+    files = os.listdir(setpath)
+
+    with open(osp.join(setpath + '/', files[j]), 'rb') as f:
+        path = np.load(f)
+    l = len(path)
+    n_stroke = int(path[-1][2])
+    for k in range(n_stroke):
+        plt.plot([path[idx][0] for idx in range(l) if path[idx][2] == k+1],
+                 [path[idx][1] for idx in range(l) if path[idx][2] == k+1], '*-')
+    plt.title(chinese[i], fontproperties=fontP)
+    plt.savefig('pic.png')
+    plt.show()
+
+
 def readTrain(i):#169, 3924
-    setpath = osp.join('./Pot11TrainPath/' + str(i).zfill(5))
+    setpath = osp.join(curwd+'/Pot11TrainPath/' + str(i).zfill(5))
     files = os.listdir(setpath)
     print(chinese[i])
     sigtrain = torch.tensor([])
