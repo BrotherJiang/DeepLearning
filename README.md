@@ -26,9 +26,9 @@ length before training models;
 Besides, I added a dimension to augment raw characters which indicates the number of stroke points belonging to.
 
 ### Project 2: CNN-NeuralRDE for long high-dimensional time series
-The CNN-RNN architecture is widely used to analyze video data since we need to use CNN to transform images and then learn their performance as a time series. [Neural-RDE](https://arxiv.org/abs/2009.08295) applied signature transform to long time seires in sub-intervals. So I tried the CNN-NeuralRDE architechture to learn video data.
+The CNN-RNN architecture is widely used to analyze video data since we need to use CNN to transform images and then learn their performance as a time series. [Neural-RDE](https://github.com/jambo6/neuralRDEs) applied signature transform to long time seires in sub-intervals. So I tried the CNN-NeuralRDE architechture to learn video data.
 
-I used the [UCF101](https://www.crcv.ucf.edu/data/UCF101.php) dataset which contains videos for different actions, and I followed [this repositary](https://github.com/HHTseng/video-classification) to collect data.
+I used the [UCF101](https://www.crcv.ucf.edu/data/UCF101.php) dataset which contains videos for different actions. Videos have various time lengths and different 2d image size. Therefore, it is reasonable to apply CNN and Neural-RDE to transorm videos with different time length to vectors with the same length. I followed [this repositary](https://github.com/HHTseng/video-classification) to collect data.
 
 ### Project 3: Sequential data generation
 After analyzing sequential data, I also tried to generate new sequential data. One idea is to train GANs based on Wasserstein distance between signature vectors for different sequences. But it failed for the pen-digit data and kept producing random x-y coordinates. Still working in this direction.
